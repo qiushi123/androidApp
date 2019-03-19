@@ -12,10 +12,11 @@ import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 
+import com.wuye.api.bean.UserBean;
 import com.wuye.api.net.BaseModel;
 import com.wuye.api.net.ServerException;
 import com.wuye.api.params.LoginReqParams;
-import com.wuye.api.response.LoginResponse;
+import com.wuye.utils.SpUtils;
 import com.wuye.utils.ToastUtils;
 
 import io.reactivex.Observer;
@@ -37,12 +38,22 @@ public class LoginActivity extends AppCompatActivity {
     private View llRegister;
     private EditText mPasswordAgain;
     private EditText addressView;
+    private EditText nameView;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+
+        UserBean userInfo = SpUtils.getUserInfo(this);
+        if (userInfo != null) {
+            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+            finish();
+        }
+
+
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
 
@@ -53,6 +64,7 @@ public class LoginActivity extends AppCompatActivity {
         llRegister = findViewById(R.id.ll_register);
         mPasswordAgain = findViewById(R.id.password_again);
         addressView = findViewById(R.id.address);
+        nameView = findViewById(R.id.name);
 
 
         findViewById(R.id.go_register).setOnClickListener(new View.OnClickListener() {
@@ -110,11 +122,17 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
+        LoginReqParams params = new LoginReqParams();
+        params.userPhone = phone;
+        params.userPassword = password;
+
         if (isRegister) {
             String passwordAgain = mPasswordAgain.getText().toString();
             String address = addressView.getText().toString();
+            String name = nameView.getText().toString();
             mPasswordAgain.setError(null);
             addressView.setError(null);
+            nameView.setError(null);
             if (TextUtils.isEmpty(passwordAgain)) {
                 mPasswordView.setError("请再次输入密码");
                 mPasswordView.requestFocus();
@@ -130,8 +148,16 @@ public class LoginActivity extends AppCompatActivity {
                 addressView.requestFocus();
                 return;
             }
+            if (TextUtils.isEmpty(name)) {
+                nameView.setError("请填写姓名");
+                nameView.requestFocus();
+                return;
+            }
+            params.userName = name;
+            params.address = address;
         }
-        goLogin(phone, password);
+
+        goLogin(params, isRegister);
     }
 
 
@@ -139,40 +165,73 @@ public class LoginActivity extends AppCompatActivity {
      * 请求网络接口
      * 执行登录或者注册操作
      * */
-    public void goLogin(String phone, String password) {
-        LoginReqParams params = new LoginReqParams();
-        params.userPhone = phone;
-        params.userPassword = password;
-        new BaseModel().login(this, params)
-                .subscribe(new Observer<LoginResponse>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-                        showProgress(true);
-                    }
-
-                    @Override
-                    public void onNext(LoginResponse loginResponse) {
-                        showProgress(false);
-
-                        if (loginResponse != null && !TextUtils.isEmpty(loginResponse.userPhone)) {
-                            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+    public void goLogin(LoginReqParams params, boolean isRegister) {
+        if (isRegister) {
+            new BaseModel().register(this, params)
+                    .subscribe(new Observer<UserBean>() {
+                        @Override
+                        public void onSubscribe(Disposable d) {
+                            showProgress(true);
                         }
-                    }
 
-                    @Override
-                    public void onError(Throwable e) {
-                        showProgress(false);
-                        if (e instanceof ServerException) {
-                            ServerException se = (ServerException) e;
-                            ToastUtils.toast(LoginActivity.this, se.getMessage());
+                        @Override
+                        public void onNext(UserBean userBean) {
+                            showProgress(false);
+                            if (userBean != null && !TextUtils.isEmpty(userBean.userPhone)) {
+                                SpUtils.saveUserInfo(LoginActivity.this, userBean);
+                                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                                finish();
+                            }
                         }
-                    }
 
-                    @Override
-                    public void onComplete() {
+                        @Override
+                        public void onError(Throwable e) {
+                            showProgress(false);
+                            if (e instanceof ServerException) {
+                                ServerException se = (ServerException) e;
+                                ToastUtils.toast(LoginActivity.this, se.getMessage());
+                            }
+                        }
 
-                    }
-                });
+                        @Override
+                        public void onComplete() {
+
+                        }
+                    });
+        } else {
+            new BaseModel().login(this, params)
+                    .subscribe(new Observer<UserBean>() {
+                        @Override
+                        public void onSubscribe(Disposable d) {
+                            showProgress(true);
+                        }
+
+                        @Override
+                        public void onNext(UserBean userBean) {
+                            showProgress(false);
+                            if (userBean != null && !TextUtils.isEmpty(userBean.userPhone)) {
+                                SpUtils.saveUserInfo(LoginActivity.this, userBean);
+                                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                                finish();
+                            }
+                        }
+
+                        @Override
+                        public void onError(Throwable e) {
+                            showProgress(false);
+                            if (e instanceof ServerException) {
+                                ServerException se = (ServerException) e;
+                                ToastUtils.toast(LoginActivity.this, se.getMessage());
+                            }
+                        }
+
+                        @Override
+                        public void onComplete() {
+
+                        }
+                    });
+        }
+
     }
 
 

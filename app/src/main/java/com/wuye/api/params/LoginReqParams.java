@@ -7,5 +7,7 @@ package com.wuye.api.params;
 public class LoginReqParams {
     public String userPhone;
     public String userPassword;
+    public String userName;
+    public String address;
 
 }

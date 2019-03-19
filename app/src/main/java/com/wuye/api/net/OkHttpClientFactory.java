@@ -15,11 +15,7 @@ import javax.net.ssl.X509TrustManager;
 import okhttp3.OkHttpClient;
 
 /**
- * Description:
- * Copyright  : Copyright (c) 2016
- * Company    : 年糕妈妈
- * Author     : 段宇鹏
- * Date       : 12/29/16
+ * Description: okhttp设置
  */
 @SuppressWarnings("deprecation")
 public class OkHttpClientFactory {

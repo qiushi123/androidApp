@@ -2,7 +2,7 @@ package com.wuye.api.net;
 
 import com.wuye.api.params.LoginReqParams;
 import com.wuye.api.response.BaseResponse;
-import com.wuye.api.response.LoginResponse;
+import com.wuye.api.bean.UserBean;
 
 import io.reactivex.Observable;
 import retrofit2.http.Body;
@@ -17,6 +17,9 @@ import retrofit2.http.POST;
 public interface ApiService {
 
     @POST("/wuye/login")
-    Observable<BaseResponse<LoginResponse>> login(@Body LoginReqParams req);
+    Observable<BaseResponse<UserBean>> login(@Body LoginReqParams req);
+
+    @POST("/wuye/register")
+    Observable<BaseResponse<UserBean>> register(@Body LoginReqParams req);
 
 }

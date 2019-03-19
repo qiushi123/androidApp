@@ -1,14 +1,190 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/base_whiteF7"
+    android:orientation="vertical"
     >
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="我是登录成功页"/>
+        android:background="@color/base_FFFFFF"
+        android:orientation="horizontal"
+        android:paddingLeft="33dp"
+        android:paddingTop="20dp">
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="秋实"
+            android:textColor="@color/base_222222"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="15611823654"
+            android:textColor="@color/base_666"
+            android:textSize="14sp"
+            />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/base_FFFFFF"
+        android:paddingBottom="10dp"
+        android:paddingLeft="33dp"
+        android:paddingTop="10dp"
+        android:text="杭州市西湖区"
+        android:textColor="@color/base_666"
+        android:textSize="14sp"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/base_whiteF7"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/base_FFFFFF"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/rl_person_edit_info"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:paddingLeft="33dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="编辑资料"
+                android:textColor="@color/base_666"
+                android:textSize="15sp"/>
+
+            <ImageView
+                android:layout_width="5dp"
+                android:layout_height="10dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="12dp"
+                android:src="@mipmap/person_icon_arrow_right"/>
+
+        </RelativeLayout>
+
+        <View style="@style/base_line_1px_marginLeft_12dp"/>
+
+        <RelativeLayout
+            android:id="@+id/rl_person_address_manager"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:paddingLeft="33dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="地址管理"
+                android:textColor="@color/base_666"
+                android:textSize="15sp"/>
+
+            <ImageView
+                android:layout_width="5dp"
+                android:layout_height="10dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="12dp"
+                android:src="@mipmap/person_icon_arrow_right"/>
+
+        </RelativeLayout>
+
+        <View style="@style/base_line_1px_marginLeft_12dp"/>
+
+        <RelativeLayout
+            android:id="@+id/rl_person_real_name"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:paddingLeft="33dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="实名认证"
+                android:textColor="@color/base_666"
+                android:textSize="15sp"/>
+
+            <ImageView
+                android:layout_width="5dp"
+                android:layout_height="10dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="12dp"
+                android:src="@mipmap/person_icon_arrow_right"/>
+
+        </RelativeLayout>
+
+        <View style="@style/base_line_1px_marginLeft_12dp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@color/base_whiteF7"/>
+
+        <RelativeLayout
+            android:id="@+id/rl_person_person_setting_like_post"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:paddingLeft="33dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="我赞过的"
+                android:textColor="@color/base_666"
+                android:textSize="15sp"/>
+
+            <ImageView
+                android:layout_width="5dp"
+                android:layout_height="10dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="12dp"
+                android:src="@mipmap/person_icon_arrow_right"/>
+        </RelativeLayout>
+
+        <View style="@style/base_line_1px_marginLeft_12dp"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_logout"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_marginTop="30dp"
+        android:background="@color/base_FFFFFF">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="退出登录"
+            android:textColor="@color/base_FF2266"
+            android:textSize="15sp"/>
+
+    </LinearLayout>
 
 </LinearLayout>

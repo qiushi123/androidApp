@@ -3,7 +3,7 @@ package com.wuye.api.net;
 import android.content.Context;
 
 import com.wuye.api.params.LoginReqParams;
-import com.wuye.api.response.LoginResponse;
+import com.wuye.api.bean.UserBean;
 
 import io.reactivex.Observable;
 
@@ -15,10 +15,17 @@ import io.reactivex.Observable;
  */
 public class BaseModel {
 
-    public Observable<LoginResponse> login(Context context, LoginReqParams params) {
+    public Observable<UserBean> login(Context context, LoginReqParams params) {
         return ServiceFactory.getServiceFactory()
                 .getApiService(context)
                 .login(params)
-                .compose(RxHelper.<LoginResponse>handleResult());
+                .compose(RxHelper.<UserBean>handleResult());
+    }
+
+    public Observable<UserBean> register(Context context, LoginReqParams params) {
+        return ServiceFactory.getServiceFactory()
+                .getApiService(context)
+                .register(params)
+                .compose(RxHelper.<UserBean>handleResult());
     }
 }

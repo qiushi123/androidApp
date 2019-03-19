@@ -1,11 +1,35 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="Full_Screen" parent="AppTheme">
+        <!--是否去除标题 -->
+        <item name="android:windowNoTitle">true</item>
+        <!--是否去除边框-->
+        <!--<item name="android:windowFrame">@null</item>-->
+        <!--<item name="android:windowBackground">@android:color/transparent</item>-->
+    </style>
+
+
+
+    <!--全局共用的分割线 1px #E8E8E8 100% 距离左边12dp-->
+    <style name="base_line_1px_marginLeft_12dp">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_marginLeft">12dp</item>
+        <item name="android:layout_height">1px</item>
+        <item name="android:background">@color/base_E8E8E8</item>
+    </style>
+    <style name="base_line_5px_marginLeft_12dp">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_marginLeft">12dp</item>
+        <item name="android:layout_height">1px</item>
+        <item name="android:background">@color/base_E8E8E8</item>
     </style>
 
 </resources>
