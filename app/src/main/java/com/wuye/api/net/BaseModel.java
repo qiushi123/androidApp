@@ -2,8 +2,12 @@ package com.wuye.api.net;
 
 import android.content.Context;
 
-import com.wuye.api.params.LoginReqParams;
+import com.wuye.api.bean.BaoXiuBean;
 import com.wuye.api.bean.UserBean;
+import com.wuye.api.params.BaoXiuReqParams;
+import com.wuye.api.params.LoginReqParams;
+
+import java.util.List;
 
 import io.reactivex.Observable;
 
@@ -27,5 +31,22 @@ public class BaseModel {
                 .getApiService(context)
                 .register(params)
                 .compose(RxHelper.<UserBean>handleResult());
+    }
+
+
+    //提交报修信息
+    public Observable<BaoXiuBean> submit(Context context, BaoXiuReqParams params) {
+        return ServiceFactory.getServiceFactory()
+                .getApiService(context)
+                .submit(params)
+                .compose(RxHelper.<BaoXiuBean>handleResult());
+    }
+
+    //查询报修列表
+    public Observable<List<BaoXiuBean>> baoxiuList(Context context, Integer baoxiuType) {
+        return ServiceFactory.getServiceFactory()
+                .getApiService(context)
+                .baoxiuList(baoxiuType)
+                .compose(RxHelper.<List<BaoXiuBean>>handleResult());
     }
 }

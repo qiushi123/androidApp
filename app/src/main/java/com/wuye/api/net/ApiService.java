@@ -1,11 +1,17 @@
 package com.wuye.api.net;
 
+import com.wuye.api.bean.BaoXiuBean;
+import com.wuye.api.bean.UserBean;
+import com.wuye.api.params.BaoXiuReqParams;
 import com.wuye.api.params.LoginReqParams;
 import com.wuye.api.response.BaseResponse;
-import com.wuye.api.bean.UserBean;
+
+import java.util.List;
 
 import io.reactivex.Observable;
 import retrofit2.http.Body;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.POST;
 
 /**
@@ -21,5 +27,12 @@ public interface ApiService {
 
     @POST("/wuye/register")
     Observable<BaseResponse<UserBean>> register(@Body LoginReqParams req);
+
+    @POST("/wuye/submit")
+    Observable<BaseResponse<BaoXiuBean>> submit(@Body BaoXiuReqParams req);
+
+    @FormUrlEncoded
+    @POST("/wuye/baoxiuList")
+    Observable<BaseResponse<List<BaoXiuBean>>> baoxiuList(@Field("baoxiuType") Integer baoxiuType);
 
 }

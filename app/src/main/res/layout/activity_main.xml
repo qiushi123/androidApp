@@ -111,8 +111,14 @@
 
         <View style="@style/base_line_1px_marginLeft_12dp"/>
 
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@color/base_whiteF7"/>
+
         <RelativeLayout
-            android:id="@+id/rl_person_real_name"
+            android:id="@+id/baoxiu"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:paddingLeft="33dp">
@@ -121,7 +127,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:text="实名认证"
+                android:text="去报修"
                 android:textColor="@color/base_666"
                 android:textSize="15sp"/>
 
@@ -132,18 +138,12 @@
                 android:layout_centerVertical="true"
                 android:layout_marginRight="12dp"
                 android:src="@mipmap/person_icon_arrow_right"/>
-
         </RelativeLayout>
 
         <View style="@style/base_line_1px_marginLeft_12dp"/>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="10dp"
-            android:background="@color/base_whiteF7"/>
-
         <RelativeLayout
-            android:id="@+id/rl_person_person_setting_like_post"
+            android:id="@+id/my_baoxiu"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:paddingLeft="33dp">
@@ -152,7 +152,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:text="我赞过的"
+                android:text="我的报修"
                 android:textColor="@color/base_666"
                 android:textSize="15sp"/>
 

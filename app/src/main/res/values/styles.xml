@@ -25,6 +25,11 @@
         <item name="android:layout_height">1px</item>
         <item name="android:background">@color/base_E8E8E8</item>
     </style>
+    <style name="base_line_1px">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1px</item>
+        <item name="android:background">@color/base_E8E8E8</item>
+    </style>
     <style name="base_line_5px_marginLeft_12dp">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_marginLeft">12dp</item>

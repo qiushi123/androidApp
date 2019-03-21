@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 import com.wuye.api.bean.UserBean;
 import com.wuye.utils.SpUtils;
+import com.wuye.weixiu.MyBaoXiuActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -32,6 +33,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Log.i("qcl0318", new Gson().toJson(userInfo));
         }
 
+        findViewById(R.id.baoxiu).setOnClickListener(this);
+        findViewById(R.id.my_baoxiu).setOnClickListener(this);
         findViewById(R.id.ll_logout).setOnClickListener(this);
     }
 
@@ -42,6 +45,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             SpUtils.saveUserInfo(this, null);
             startActivity(new Intent(this, LoginActivity.class));
             finish();
+        } else if (id == R.id.baoxiu) {
+            startActivity(new Intent(this, SubmitActivity.class));
+        } else if (id == R.id.my_baoxiu) {
+            startActivity(new Intent(this, MyBaoXiuActivity.class));
         }
     }
 }
