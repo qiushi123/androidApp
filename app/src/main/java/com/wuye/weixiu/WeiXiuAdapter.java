@@ -34,7 +34,7 @@ public class WeiXiuAdapter extends DelegateAdapter.Adapter<WeiXiuViewHolder> {
     public WeiXiuViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.item_weixiu, parent,
                 false);
-        return new WeiXiuViewHolder(view, context);
+        return new WeiXiuViewHolder(view, context,this);
     }
 
     @Override

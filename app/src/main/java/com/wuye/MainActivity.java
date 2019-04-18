@@ -24,18 +24,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         phone = findViewById(R.id.phone);
         address = findViewById(R.id.address);
 
+
+        findViewById(R.id.change_address).setOnClickListener(this);
+        findViewById(R.id.baoxiu).setOnClickListener(this);
+        findViewById(R.id.my_baoxiu).setOnClickListener(this);
+        findViewById(R.id.ll_logout).setOnClickListener(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         UserBean userInfo = SpUtils.getUserInfo(this);
         if (userInfo != null) {
             name.setText(userInfo.userName);
             phone.setText(userInfo.userPhone);
             address.setText(userInfo.address);
-            Log.i("qcl0318", new Gson().toJson(userInfo));
-            Log.i("qcl0318", new Gson().toJson(userInfo));
+            Log.i("qcl0322", new Gson().toJson(userInfo));
         }
-
-        findViewById(R.id.baoxiu).setOnClickListener(this);
-        findViewById(R.id.my_baoxiu).setOnClickListener(this);
-        findViewById(R.id.ll_logout).setOnClickListener(this);
     }
 
     @Override
@@ -45,8 +50,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             SpUtils.saveUserInfo(this, null);
             startActivity(new Intent(this, LoginActivity.class));
             finish();
+        } else if (id == R.id.change_address) {
+            Intent intent = new Intent(this, SubmitActivity.class);
+            intent.putExtra("type", 1);//1 修改地址，2提交维修
+            startActivity(intent);
         } else if (id == R.id.baoxiu) {
-            startActivity(new Intent(this, SubmitActivity.class));
+            Intent intent = new Intent(this, SubmitActivity.class);
+            intent.putExtra("type", 2);//1 修改地址，2提交维修
+            startActivity(intent);
         } else if (id == R.id.my_baoxiu) {
             startActivity(new Intent(this, MyBaoXiuActivity.class));
         }

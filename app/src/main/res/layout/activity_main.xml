@@ -59,8 +59,9 @@
         android:background="@color/base_FFFFFF"
         android:orientation="vertical">
 
+
         <RelativeLayout
-            android:id="@+id/rl_person_edit_info"
+            android:id="@+id/change_address"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:paddingLeft="33dp">
@@ -69,33 +70,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:text="编辑资料"
-                android:textColor="@color/base_666"
-                android:textSize="15sp"/>
-
-            <ImageView
-                android:layout_width="5dp"
-                android:layout_height="10dp"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="12dp"
-                android:src="@mipmap/person_icon_arrow_right"/>
-
-        </RelativeLayout>
-
-        <View style="@style/base_line_1px_marginLeft_12dp"/>
-
-        <RelativeLayout
-            android:id="@+id/rl_person_address_manager"
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:paddingLeft="33dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:text="地址管理"
+                android:text="修改地址"
                 android:textColor="@color/base_666"
                 android:textSize="15sp"/>
 

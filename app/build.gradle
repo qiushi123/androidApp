@@ -14,19 +14,39 @@ android {
         repositories {
 
             google()
+//            maven { url "http://dl.bintray.com/populov/maven" }
+//            maven {
+//                url 'http://4thline.org/m2'
+//            }
+//            mavenCentral()
+            //github
             maven {
                 url "https://jitpack.io"
             }
-            maven { url "http://dl.bintray.com/populov/maven" }
+            //国内阿里云
             maven {
-                url 'http://4thline.org/m2'
+                url 'http://maven.aliyun.com/nexus/content/groups/public/'
             }
-            mavenCentral()
+            maven {
+                url 'http://maven.aliyun.com/nexus/content/repositories/jcenter'
+            }
             jcenter()
         }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    allprojects {
+        repositories {
+            //国内阿里云
+            maven {
+                url 'http://maven.aliyun.com/nexus/content/groups/public/'
+            }
+            maven {
+                url 'http://maven.aliyun.com/nexus/content/repositories/jcenter'
+            }
         }
     }
 }
@@ -50,7 +70,7 @@ dependencies {
     //导航栏指示器
     implementation 'com.github.hackware1993:MagicIndicator:1.5.0'
     //vlayout
-    implementation ('com.alibaba.android:vlayout:1.2.8@aar') {
+    implementation('com.alibaba.android:vlayout:1.2.8@aar') {
         transitive = true
     }
 }

@@ -28,6 +28,7 @@
                 />
 
             <TextView
+                android:id="@+id/title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
@@ -44,11 +45,11 @@
     </LinearLayout>
 
     <RelativeLayout
-        android:id="@+id/rl_person_feedback"
+        android:id="@+id/baoxiu_root"
         android:layout_width="match_parent"
         android:layout_height="160dp"
         android:background="@color/base_FFFFFF"
-        android:onClick="onClick">
+        android:visibility="gone">
 
         <EditText
             android:id="@+id/content"
@@ -57,9 +58,9 @@
             android:layout_marginLeft="12dp"
             android:layout_marginRight="12dp"
             android:layout_marginTop="12dp"
-            android:hint="请描述您的报修类型"
             android:background="@color/base_FFFFFF"
             android:gravity="start"
+            android:hint="请描述您的报修类型"
             android:lineSpacingMultiplier="1.25"
             android:maxLength="500"
             android:textSize="15sp"/>
@@ -88,6 +89,18 @@
             android:textSize="14sp"/>
 
     </RelativeLayout>
+
+    <EditText
+        android:id="@+id/address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="12dp"
+        android:background="@color/base_FFFFFF"
+        android:hint="填写您的新地址"
+        android:padding="5dp"
+        android:textSize="16sp"/>
 
     <Button
         android:id="@+id/button"

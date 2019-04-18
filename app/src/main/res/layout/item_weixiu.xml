@@ -11,45 +11,155 @@
         android:id="@+id/ll_article_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:paddingBottom="15dp"
         android:paddingLeft="18dp"
         android:paddingRight="18dp"
         >
 
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="15dp"
             android:layout_marginTop="15dp"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:orientation="horizontal">
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:lineSpacingExtra="5dp"
                 android:maxLines="2"
                 android:text="维修内容："
                 android:textColor="@color/base_222222"
-                android:textSize="17sp"/>
+                android:textSize="15sp"/>
 
             <TextView
                 android:id="@+id/tv_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/base_greyBBB"
-                android:textSize="12sp"/>
+                android:text="我家一楼玻璃坏了我家一楼玻璃坏了我家一楼玻璃坏了我家一楼玻璃坏了我家一楼玻璃坏了我家一楼玻璃坏了我家一楼玻璃坏了我家一楼玻璃坏了我家一楼玻璃坏了"
+                android:textColor="@color/base_04ABBE"
+                android:textSize="14sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="维修状态：待维修"
-                android:textColor="@color/base_greyBBB"
-                android:textSize="12sp"/>
+                android:text="维修地址："
+                android:textColor="@color/base_222222"
+                android:textSize="15sp"/>
 
+            <TextView
+                android:id="@+id/tv_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="西湖区嘉禾花园"
+                android:textColor="@color/base_666"
+                android:textSize="14sp"/>
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="维修状态："
+                android:textColor="@color/base_222222"
+                android:textSize="15sp"/>
+
+            <TextView
+                android:id="@+id/tv_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="待接单"
+                android:textColor="@color/base_FF7C19"
+                android:textSize="14sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="维修报价："
+                android:textColor="@color/base_222222"
+                android:textSize="15sp"/>
+
+            <TextView
+                android:id="@+id/tv_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="待定价"
+                android:textColor="@color/base_38adff"
+                android:textSize="14sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/pingjia_root"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="维修评价："
+                android:textColor="@color/base_222222"
+                android:textSize="15sp"/>
+
+            <TextView
+                android:id="@+id/tv_pingjia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/base_666"
+                android:textSize="14sp"/>
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/go_pay"
+            android:layout_width="180dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="10dp"
+            android:background="@color/base_blueGreen"
+            android:gravity="center"
+            android:text="去支付"
+            android:textColor="@color/base_FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/go_comment"
+            android:layout_width="180dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="10dp"
+            android:background="@color/base_38adff"
+            android:gravity="center"
+            android:text="去评价"
+            android:textColor="@color/base_FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:visibility="gone"/>
+
     </LinearLayout>
 
     <View

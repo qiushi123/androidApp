@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 
 import com.wuye.R;
@@ -35,7 +36,14 @@ public class MyBaoXiuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_my_bao_xiu);
 
         initView();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         initData();
+        Log.i("qcl0322", "onResume");
+
     }
 
     private void initView() {
@@ -59,10 +67,12 @@ public class MyBaoXiuActivity extends AppCompatActivity {
     /**
      * 初始化指示器
      */
+    //0待维修，1已接单，2已处理待支付，3已支付待评价，4已完成
     public void initIndicator() {
         tags = new ArrayList<>();
         tags.add("待维修");
-        tags.add("已维修待支付");
+        tags.add("已接单");
+        tags.add("待支付");
         tags.add("待评价");
         tags.add("已完成");
 

@@ -33,12 +33,28 @@ public class BaseModel {
                 .compose(RxHelper.<UserBean>handleResult());
     }
 
+    //修改用户信息
+    public Observable<UserBean> changeUserInfo(Context context, String userPhone, String address) {
+        return ServiceFactory.getServiceFactory()
+                .getApiService(context)
+                .changeAddress(userPhone, address)
+                .compose(RxHelper.<UserBean>handleResult());
+    }
+
 
     //提交报修信息
     public Observable<BaoXiuBean> submit(Context context, BaoXiuReqParams params) {
         return ServiceFactory.getServiceFactory()
                 .getApiService(context)
                 .submit(params)
+                .compose(RxHelper.<BaoXiuBean>handleResult());
+    }
+
+    //修改报修信息
+    public Observable<BaoXiuBean> change(Context context, BaoXiuReqParams params) {
+        return ServiceFactory.getServiceFactory()
+                .getApiService(context)
+                .change(params)
                 .compose(RxHelper.<BaoXiuBean>handleResult());
     }
 

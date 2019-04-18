@@ -5,9 +5,13 @@ package com.wuye.api.params;
  */
 
 public class BaoXiuReqParams {
+    public Long baoxiuId;
     public String phone;
     public String name;
     public String content;
     public String address;
+
+    public String comment;
+    public Integer baoxiuType;
 
 }

@@ -13,6 +13,7 @@ import com.alibaba.android.vlayout.VirtualLayoutManager;
 import com.wuye.R;
 import com.wuye.api.bean.BaoXiuBean;
 import com.wuye.api.net.BaseModel;
+import com.wuye.utils.ToastUtils;
 
 import java.util.List;
 
@@ -71,13 +72,17 @@ public class WeiXiuFragment extends Fragment {
                     @Override
                     public void onNext(List<BaoXiuBean> list) {
                         if (list != null && list.size() > 0) {
+                            recyclerView.setVisibility(View.VISIBLE);
                             weiXiuAdapter.setListData(list);
+                        } else {
+                            recyclerView.setVisibility(View.GONE);
                         }
                     }
 
                     @Override
                     public void onError(Throwable e) {
-
+                        ToastUtils.toast("请求失败，请检查网络");
+                        recyclerView.setVisibility(View.GONE);
                     }
 
                     @Override

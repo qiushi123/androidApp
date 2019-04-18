@@ -28,8 +28,17 @@ public interface ApiService {
     @POST("/wuye/register")
     Observable<BaseResponse<UserBean>> register(@Body LoginReqParams req);
 
+    @FormUrlEncoded
+    @POST("/wuye/changeAddress")
+    Observable<BaseResponse<UserBean>> changeAddress(@Field("userPhone") String userPhone,
+                                                     @Field("address") String address);
+
+
     @POST("/wuye/submit")
     Observable<BaseResponse<BaoXiuBean>> submit(@Body BaoXiuReqParams req);
+
+    @POST("/wuye/baoxiuChange")
+    Observable<BaseResponse<BaoXiuBean>> change(@Body BaoXiuReqParams req);
 
     @FormUrlEncoded
     @POST("/wuye/baoxiuList")
