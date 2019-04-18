@@ -12,6 +12,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
  * desc:服务的工厂类
  */
 public class ServiceFactory {
+
 //    private static String BASE_URL = "http://20.86.11.248:8080";
     private static String BASE_URL = "http://192.168.0.104:8080";
     public static int NET_SUCCESS_CODE = 100;//请求成功返回的code
