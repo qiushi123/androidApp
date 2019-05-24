@@ -60,7 +60,7 @@
             android:layout_marginTop="12dp"
             android:background="@color/base_FFFFFF"
             android:gravity="start"
-            android:hint="请描述您的报修类型"
+            android:hint="请填写内容"
             android:lineSpacingMultiplier="1.25"
             android:maxLength="500"
             android:textSize="15sp"/>

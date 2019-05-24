@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.wuye.api.bean.BaoXiuBean;
+import com.wuye.api.bean.TouSuBean;
 import com.wuye.api.bean.UserBean;
 import com.wuye.api.net.BaseModel;
 import com.wuye.api.net.ServerException;
@@ -31,7 +32,7 @@ public class SubmitActivity extends AppCompatActivity {
     private EditText content;
     private EditText address;
 
-    private int type;//1 修改地址，2提交维修
+    private int type;//1 修改地址，2提交维修，3投诉物业
     private UserBean userInfo;
 
     @Override
@@ -54,7 +55,11 @@ public class SubmitActivity extends AppCompatActivity {
         address = findViewById(R.id.address);
 
 
-        if (type == 2) {
+        if (type == 3) {
+            title.setText("投诉");
+            baoxiu_root.setVisibility(View.VISIBLE);
+            address.setVisibility(View.GONE);
+        } else if (type == 2) {
             title.setText("报修");
             baoxiu_root.setVisibility(View.VISIBLE);
             address.setVisibility(View.GONE);
@@ -73,7 +78,9 @@ public class SubmitActivity extends AppCompatActivity {
         findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (type == 2) {
+                if (type == 3) {
+                    tousu();
+                } else if (type == 2) {
                     submit();
                 } else {
                     changeAddress();
@@ -132,6 +139,53 @@ public class SubmitActivity extends AppCompatActivity {
                     }
                 });
 
+    }
+
+    //投诉
+    private void tousu() {
+        if (userInfo == null) {
+            return;
+        }
+        String string = content.getText().toString();
+        if (TextUtils.isEmpty(string)) {
+            ToastUtils.toast("内容不能为空");
+            return;
+        }
+        BaoXiuReqParams params = new BaoXiuReqParams();
+        params.name = userInfo.userName;
+        params.phone = userInfo.userPhone;
+        params.content = string;
+        new BaseModel().tousu(this, params)
+                .subscribe(new Observer<TouSuBean>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                    }
+
+                    @Override
+                    public void onNext(TouSuBean userBean) {
+                        if (userBean != null) {
+                            ToastUtils.toast("提交成功");
+                            finish();
+                        } else {
+                            ToastUtils.toast("提交失败");
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        if (e instanceof ServerException) {
+                            ServerException se = (ServerException) e;
+                            ToastUtils.toast(SubmitActivity.this, se.getMessage());
+                        } else {
+                            ToastUtils.toast("提交失败");
+                        }
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
     }
 
     //提交

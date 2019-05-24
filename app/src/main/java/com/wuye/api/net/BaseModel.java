@@ -3,6 +3,9 @@ package com.wuye.api.net;
 import android.content.Context;
 
 import com.wuye.api.bean.BaoXiuBean;
+import com.wuye.api.bean.GongGaoBean;
+import com.wuye.api.bean.ShuiDianBean;
+import com.wuye.api.bean.TouSuBean;
 import com.wuye.api.bean.UserBean;
 import com.wuye.api.params.BaoXiuReqParams;
 import com.wuye.api.params.LoginReqParams;
@@ -50,6 +53,14 @@ public class BaseModel {
                 .compose(RxHelper.<BaoXiuBean>handleResult());
     }
 
+    //提交投诉信息
+    public Observable<TouSuBean> tousu(Context context, BaoXiuReqParams params) {
+        return ServiceFactory.getServiceFactory()
+                .getApiService(context)
+                .tousu(params)
+                .compose(RxHelper.<TouSuBean>handleResult());
+    }
+
     //修改报修信息
     public Observable<BaoXiuBean> change(Context context, BaoXiuReqParams params) {
         return ServiceFactory.getServiceFactory()
@@ -64,5 +75,29 @@ public class BaseModel {
                 .getApiService(context)
                 .baoxiuList(baoxiuType)
                 .compose(RxHelper.<List<BaoXiuBean>>handleResult());
+    }
+
+    //查询公告列表
+    public Observable<List<GongGaoBean>> gonggaoList(Context context) {
+        return ServiceFactory.getServiceFactory()
+                .getApiService(context)
+                .gonggaoList()
+                .compose(RxHelper.<List<GongGaoBean>>handleResult());
+    }
+
+    //查询水电费列表
+    public Observable<List<ShuiDianBean>> shuidianList(Context context, String userPhone) {
+        return ServiceFactory.getServiceFactory()
+                .getApiService(context)
+                .getUserShuiDianList(userPhone)
+                .compose(RxHelper.<List<ShuiDianBean>>handleResult());
+    }
+
+    //交水电费
+    public Observable<ShuiDianBean> shuidianChange(Context context, long id) {
+        return ServiceFactory.getServiceFactory()
+                .getApiService(context)
+                .changShuiDian(id)
+                .compose(RxHelper.<ShuiDianBean>handleResult());
     }
 }

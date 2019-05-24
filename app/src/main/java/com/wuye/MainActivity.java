@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.wuye.api.bean.UserBean;
+import com.wuye.gonggao.GongGaoActivity;
+import com.wuye.shuidian.ShuiDianActivity;
 import com.wuye.utils.SpUtils;
 import com.wuye.weixiu.MyBaoXiuActivity;
 
@@ -29,6 +31,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.baoxiu).setOnClickListener(this);
         findViewById(R.id.my_baoxiu).setOnClickListener(this);
         findViewById(R.id.ll_logout).setOnClickListener(this);
+        findViewById(R.id.wuyegonggao).setOnClickListener(this);
+        findViewById(R.id.shuidian).setOnClickListener(this);
+        findViewById(R.id.tousu).setOnClickListener(this);
     }
 
     @Override
@@ -60,6 +65,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(intent);
         } else if (id == R.id.my_baoxiu) {
             startActivity(new Intent(this, MyBaoXiuActivity.class));
+        } else if (id == R.id.wuyegonggao) {
+            startActivity(new Intent(this, GongGaoActivity.class));
+        } else if (id == R.id.shuidian) {
+            startActivity(new Intent(this, ShuiDianActivity.class));
+        } else if (id == R.id.tousu) {
+            Intent intent = new Intent(this, SubmitActivity.class);
+            intent.putExtra("type", 3);//1 修改地址，2提交维修
+            startActivity(intent);
         }
     }
 }
